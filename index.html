@@ -6,9 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TDM</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-    <script src="script.js"></script>
 </head>
 <body>
-    
+    <script>
+        // Load the image before setup() and draw()
+        function preload() {
+            img = loadImage('undercon.jpg');
+        }
+
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+        }
+
+        function draw() {
+            background(220);
+
+            // Center the image both horizontally and vertically
+            let x = (width - img.width) / 2;
+            let y = (height - img.height) / 2;
+
+            // Display the loaded image at the center
+            image(img, x, y);
+        }
+    </script>
 </body>
 </html>
