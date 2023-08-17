@@ -4,29 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TDM</title>
+    <title>TDM Animation</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 </head>
 <body>
     <script>
-        // Load the image before setup() and draw()
-        function preload() {
-            img = loadImage('undercon.jpg');
-        }
+        let fadeIn = true;
+        let fadeAmount = 0;
+        let textOpacity = 0;
 
         function setup() {
             createCanvas(windowWidth, windowHeight);
+            textSize(48);
+            textAlign(CENTER, CENTER);
+            frameRate(30); // Adjust animation speed
         }
 
         function draw() {
-            background(255);
+            background(220);
 
-            // Center the image both horizontally and vertically
-            let x = (width - img.width) / 2;
-            let y = (height - img.height) / 2;
+            if (fadeIn) {
+                fadeAmount += 10;
+                if (fadeAmount >= 255) {
+                    fadeIn = false;
+                }
+            } else {
+                fadeAmount -= 10;
+                if (fadeAmount <= 0) {
+                    fadeIn = true;
+                }
+            }
 
-            // Display the loaded image at the center
-            image(img, x, y);
+            textOpacity = constrain(fadeAmount, 0, 255);
+
+            fill(0, textOpacity);
+            text("truth under construction.", width / 2, height / 2);
         }
     </script>
 </body>
