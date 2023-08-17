@@ -17,19 +17,20 @@
             createCanvas(windowWidth, windowHeight);
             textSize(48);
             textAlign(CENTER, CENTER);
-            frameRate(30); // Adjust animation speed
+            textWrap(WORD); // Enable word wrapping
+            frameRate(10); // Adjust animation speed (lower value for slower speed)
         }
 
         function draw() {
             background(220);
 
             if (fadeIn) {
-                fadeAmount += 10;
+                fadeAmount += 2; // Adjust fade speed (lower value for slower speed)
                 if (fadeAmount >= 255) {
                     fadeIn = false;
                 }
             } else {
-                fadeAmount -= 10;
+                fadeAmount -= 2; // Adjust fade speed (lower value for slower speed)
                 if (fadeAmount <= 0) {
                     fadeIn = true;
                 }
@@ -38,7 +39,7 @@
             textOpacity = constrain(fadeAmount, 0, 255);
 
             fill(0, textOpacity);
-            text("truth under construction.", width / 2, height / 2);
+            text("truth under construction", width / 2, height / 2, width * 0.8, height);
         }
     </script>
 </body>
